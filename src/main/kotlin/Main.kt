@@ -39,60 +39,68 @@ fun main() {
         shape = Sphere(5f, Float3(0f, 0f, 30f)),
         material = Material(
             diffuse = Float3(0.25f, 0.75f, 0.4f),
-            specularConstant = 1f
+            specularConstant = 0.5f
         )
     ))
 
     scene.addShape(SceneObject(
-        shape = Sphere(3f, Float3(10f, 0f, 30f)),
+        shape = Sphere(3f, Float3(8f, 0f, 30f)),
         material = Material(
             diffuse = Float3(0.75f, 0.4f, 0.25f),
-            specularConstant = 1f
+            specularConstant = 0.5f
         )
     ))
 
     scene.addShape(SceneObject(
-        shape = Sphere(3f, Float3(-10f, 0f, 30f)),
+        shape = Sphere(3f, Float3(-8f, 0f, 30f)),
         material = Material(
             diffuse = Float3(0.25f, 0.4f, 0.75f),
-            specularConstant = 1f
+            specularConstant = 0.5f
         )
     ))
 
-    scene.addShape(SceneObject(
-        shape = Sphere(2f, Float3(-10f, 0f, 20f)),
-        material = Material(
-            diffuse = Float3(0.5f, 0.75f, 0.5f),
-            specularConstant = 1f
-        )
-    ))
+//    scene.addShape(SceneObject(
+//        shape = Sphere(2f, Float3(-10f, 0f, 20f)),
+//        material = Material(
+//            diffuse = Float3(0.5f, 0.75f, 0.5f),
+//            specularConstant = 0.2f
+//        )
+//    ))
+
+//    scene.addShape(SceneObject(
+//        shape = Sphere(2f, Float3(0f, 0f, 20f)),
+//        material = Material(
+//            diffuse = Float3(0.5f, 0.75f, 0.5f),
+//            specularConstant = 0.2f
+//        )
+//    ))
+//
+//    scene.addShape(SceneObject(
+//        shape = Sphere(2f, Float3(10f, 0f, 20f)),
+//        material = Material(
+//            diffuse = Float3(0.5f, 0.75f, 0.5f),
+//            specularConstant = 0.2f
+//        )
+//    ))
+//
+//    scene.addShape(SceneObject(
+//        shape = Sphere(2f, Float3(-10f, 0f, 20f)),
+//        material = Material(
+//            diffuse = Float3(0.5f, 0.75f, 0.5f),
+//            specularConstant = 0.2f
+//        )
+//    ))
 
     scene.addShape(SceneObject(
-        shape = Sphere(2f, Float3(0f, 0f, 20f)),
+        shape = Plane(-1f, Float3(0f, 1f, 0f)),
         material = Material(
-            diffuse = Float3(0.5f, 0.75f, 0.5f),
-            specularConstant = 1f
-        )
-    ))
-
-    scene.addShape(SceneObject(
-        shape = Sphere(2f, Float3(10f, 0f, 20f)),
-        material = Material(
-            diffuse = Float3(0.5f, 0.75f, 0.5f),
-            specularConstant = 1f
-        )
-    ))
-
-    scene.addShape(SceneObject(
-        shape = Sphere(2f, Float3(-10f, 0f, 20f)),
-        material = Material(
-            diffuse = Float3(0.5f, 0.75f, 0.5f),
-            specularConstant = 1f
+            diffuse = Float3(1f, 0f, 0f),
+            specularConstant = 0.2f
         )
     ))
 
     scene.addLight(PointLight(
-        position = Float3(0f, 10f, 0f),
+        position = Float3(0f, 2f, -4f),
         color = Float3(1f, 1f, 1f),
         brightness = 0.8f
     ))

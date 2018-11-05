@@ -35,12 +35,12 @@ data class Sphere(val radius : Float, val center : Float3) : Shape() {
     override fun getNormal(point: Float3) = normalize(point - center)
 }
 
-data class Plane(val origin : Float3, val normal : Float3) : Shape() {
+data class Plane(val distance : Float, val normal : Float3) : Shape() {
     override fun intersects(ray: Ray): Collision {
         val denom = dot(ray.direction, normal)
         val epsilon = 1e-6f
-        if (denom > epsilon) {
-            val t = dot(origin - ray.origin, normal) / denom
+        if (Math.abs(denom) > epsilon) {
+            val t = dot((normal * distance) - ray.origin, normal) / denom
             if (t >= 0) return Collision.Hit(t)
         }
 
