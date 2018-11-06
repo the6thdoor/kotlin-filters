@@ -11,24 +11,6 @@ fun main() {
         Float3(distanceMap(distance), distanceMap(distance), distanceMap(distance)).toIntRGB()
     }
 
-    val averageFilter = Filter(
-        1f, 1f, 1f,
-        1f, 1f, 1f,
-        1f, 1f, 1f
-    ).normalize()
-
-    val edgeDetection1 = Filter(
-        1f, 0f, -1f,
-        0f, 0f, 0f,
-        -1f, 0f, 1f
-    )
-
-    val sharpen = Filter(
-        0f, -1f, 0f,
-        -1f, 5f, -1f,
-        0f, -1f, 0f
-    )
-
     image.save("original")
     image.apply(averageFilter).save("averageFilter")
     image.apply(edgeDetection1).apply(averageFilter).apply(edgeDetection1).save("edgeDetection1")
@@ -111,8 +93,13 @@ fun main() {
 //    rayTracingImage.apply(sharpen, 5).apply(edgeDetection1).save("garbledRayTracing")
 
     val curve = Quadratic(1f, 0f, 0f) // y = x^2
-    drawCurve(Float2(0f, -5f), Float2(10f, 10f), curve).save("quadratic")
-    drawCurve(Float2(0f, 0f), Float2(10f, 10f), Cubic(1f, 1f, 1f, 1f)).save("cubic")
+    Image.solid(800, 800, 0xFFFFFF)
+        .drawCurve(Float2(0f, -5f), Float2(10f, 10f), curve, false)
+        .save("quadratic")
+
+    Image.solid(800, 800, 0xFFFFFF)
+        .drawCurve(Float2(0f, 0f), Float2(10f, 10f), Cubic(0.3f, 1f, -2f, 0f), true)
+        .save("cubic")
 }
 
 fun distanceMap(x : Float) : Float = if (x <= 1.0f) x else 0f

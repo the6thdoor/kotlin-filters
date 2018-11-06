@@ -4,7 +4,7 @@ import javax.imageio.ImageIO
 
 data class Image(val width : Int, val height : Int, val pixels : IntArray = IntArray(width * height)) {
     operator fun set(x : Int, y : Int, color : Int) {
-        pixels[x + y * width] = color
+        if (x + y * width < width * height && x + y * width >= 0) pixels[x + y * width] = color
     }
 
     operator fun get(x : Int, y : Int) = pixels[x + y * width]
@@ -32,6 +32,8 @@ data class Image(val width : Int, val height : Int, val pixels : IntArray = IntA
     }
 
     companion object {
+        fun solid(width : Int, height : Int, color : Int) = Image(width, height, IntArray(width * height) { color })
+
         fun create(width : Int, height : Int, renderer : (Int, Int) -> Int) : Image {
             val pixels = (0..(width*height - 1)).map { i -> renderer(i % width, i / width) }.toIntArray()
             return Image(width, height, pixels)

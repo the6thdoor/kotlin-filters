@@ -32,6 +32,30 @@ class Filter(vararg val kernel : Float) {
     }
 }
 
+val averageFilter = Filter(
+    1f, 1f, 1f,
+    1f, 1f, 1f,
+    1f, 1f, 1f
+).normalize()
+
+val edgeDetection1 = Filter(
+    1f, 0f, -1f,
+    0f, 0f, 0f,
+    -1f, 0f, 1f
+)
+
+val sharpen = Filter(
+    0f, -1f, 0f,
+    -1f, 5f, -1f,
+    0f, -1f, 0f
+)
+
+val gaussianFilter = Filter(
+    1f, 2f, 1f,
+    2f, 4f, 2f,
+    1f, 2f, 1f
+).normalize()
+
 fun Float3.clamp(lower : Float, upper : Float) = this.transform { Math.max(lower, Math.min(upper, it)) }
 fun Float3.toIntRGB() : Int {
     val shifted = this * 255f
