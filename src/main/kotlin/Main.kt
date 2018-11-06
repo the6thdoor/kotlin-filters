@@ -1,3 +1,4 @@
+import com.curiouscreature.kotlin.math.Float2
 import com.curiouscreature.kotlin.math.Float3
 import kotlin.random.Random
 
@@ -105,9 +106,13 @@ fun main() {
         brightness = 0.8f
     ))
 
-    val rayTracingImage = Image.renderScene(800, 600, scene)
-    rayTracingImage.save("rayTracingImage")
-    rayTracingImage.apply(sharpen, 5).apply(edgeDetection1).save("garbledRayTracing")
+//    val rayTracingImage = Image.renderScene(800, 600, scene)
+//    rayTracingImage.save("rayTracingImage")
+//    rayTracingImage.apply(sharpen, 5).apply(edgeDetection1).save("garbledRayTracing")
+
+    val curve = Quadratic(1f, 0f, 0f) // y = x^2
+    drawCurve(Float2(0f, -5f), Float2(10f, 10f), curve).save("quadratic")
+    drawCurve(Float2(0f, 0f), Float2(10f, 10f), Cubic(1f, 1f, 1f, 1f)).save("cubic")
 }
 
 fun distanceMap(x : Float) : Float = if (x <= 1.0f) x else 0f
